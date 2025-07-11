@@ -19,16 +19,13 @@ public class AutoTotemConfigScreen {
         main.addEntry(entryBuilder.startBooleanToggle(
                         Component.translatable("config.justanotherautototem.enabled"),
                         AutoTotemFileBuilder.INSTANCE.isEnabled)
-                .setTooltip(Component.translatable("config.justanotherautototem.enabled.tooltip"))
                 .setSaveConsumer(val -> AutoTotemFileBuilder.INSTANCE.isEnabled = val)
                 .build());
 
         main.addEntry(entryBuilder.startIntField(
                         Component.translatable("config.justanotherautototem.delay"),
                         AutoTotemFileBuilder.INSTANCE.Delay)
-                .setTooltip(Component.translatable("config.justanotherautototem.delay.tooltip"))
                 .setMin(0)
-                .setMax(10000000)
                 .setSaveConsumer(val -> {
                     AutoTotemFileBuilder.INSTANCE.Delay = val;
                     AutoTotemFileBuilder.save();
