@@ -25,6 +25,7 @@ public class AutoTotemConfigScreen {
         main.addEntry(entryBuilder.startIntField(
                         Component.translatable("config.justanotherautototem.delay"),
                         AutoTotemFileBuilder.INSTANCE.Delay)
+                .setTooltip(Component.translatable("config.justanotherautototem.delay.tooltip"))
                 .setMin(0)
                 .setSaveConsumer(val -> {
                     AutoTotemFileBuilder.INSTANCE.Delay = val;
