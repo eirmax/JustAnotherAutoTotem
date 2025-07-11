@@ -1,0 +1,7 @@
+{
+  "config.justanotherautototem.title": "JustAnotherAutoTotem",
+  "config.justanotherautototem.enabled": "Enabled/Disabled",
+  "config.justanotherautototem.delay": "Delay",
+  "config.justanotherautototem.hotbar_only": "Hotbar only",
+  "config.justanotherautototem.hotbar_only.tooltip" : "The replacement will only be done if the totems are in the hotbar."
+}
