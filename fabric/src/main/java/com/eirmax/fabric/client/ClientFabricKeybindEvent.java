@@ -1,6 +1,6 @@
 package com.eirmax.fabric.client;
 
-import com.eirmax.config.AutoTotemConfigScreen;
+import com.eirmax.fabric.config.AutoTotemConfigScreenFabric;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -17,7 +17,7 @@ public class ClientFabricKeybindEvent {
                 while (client.player != null && key.consumeClick()) {
                     if (key.getName().equals("key.justanotherautototem.open_menu")) {
                         if (Minecraft.getInstance().screen == null) {
-                            Minecraft.getInstance().setScreen(AutoTotemConfigScreen.create(null));
+                            Minecraft.getInstance().setScreen(AutoTotemConfigScreenFabric.create(null));
                         }
                     }
                 }

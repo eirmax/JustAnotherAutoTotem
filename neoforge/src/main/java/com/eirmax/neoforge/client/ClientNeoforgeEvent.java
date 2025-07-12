@@ -1,7 +1,7 @@
 package com.eirmax.neoforge.client;
 
 import com.eirmax.JustAnotherAutoTotem;
-import com.eirmax.config.AutoTotemConfigScreen;
+import com.eirmax.neoforge.config.AutoTotemConfigScreenNeoForge;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -18,7 +18,7 @@ public class ClientNeoforgeEvent {
             while (Minecraft.getInstance().player != null && key.get().consumeClick()) {
                 if (key.get().getName().equals("key.justanotherautototem.open_menu")) {
                     if (Minecraft.getInstance().screen == null) {
-                        Minecraft.getInstance().setScreen(AutoTotemConfigScreen.create(null));
+                        Minecraft.getInstance().setScreen(AutoTotemConfigScreenNeoForge.create(null));
                     }
                 }
             }
