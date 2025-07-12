@@ -19,7 +19,6 @@ public class ClientNeoforgeKeybindEvent {
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event) {
         keyMappings.add(Lazy.of(() -> new KeyMapping("key.justanotherautototem.swap", GLFW.GLFW_KEY_R, "category.justanotherautototem")));
-        keyMappings.add(Lazy.of(() -> new KeyMapping("key.justanotherautototem", GLFW.GLFW_KEY_B, "category.justanotherautototem")));
 
         for (Lazy<KeyMapping> key : keyMappings) {
             event.register(key.get());
