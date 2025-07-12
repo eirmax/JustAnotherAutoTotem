@@ -7,9 +7,9 @@ license = "MIT"
 modId = "justanotherautototem"
 version = "${version}"
 displayName = "JustAnotherAutoTotem"
-authors = "Me!"
+authors = "eirmax"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Automatically change the pop totem to a new one
 '''
 #logoFile = ""
 
