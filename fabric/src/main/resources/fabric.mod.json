@@ -3,13 +3,13 @@
   "id": "justanotherautototem",
   "version": "${version}",
   "name": "JustAnotherAutoTotem",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Automatically change the pop totem to a new one",
   "authors": [
     "eirmax"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/eirmax/JustAnotherAutoTotem"
   },
   "license": "MIT",
   "icon": "assets/justanotherautototem/icon.png",
