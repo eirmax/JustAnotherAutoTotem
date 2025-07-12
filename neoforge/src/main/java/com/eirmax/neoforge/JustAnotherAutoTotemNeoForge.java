@@ -9,5 +9,7 @@ public final class JustAnotherAutoTotemNeoForge {
     public JustAnotherAutoTotemNeoForge() {
         // Run our common setup.
         JustAnotherAutoTotem.init();
+
+
     }
 }
