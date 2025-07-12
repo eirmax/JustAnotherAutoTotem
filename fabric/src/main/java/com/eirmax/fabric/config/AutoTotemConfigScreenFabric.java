@@ -1,4 +1,4 @@
-package com.eirmax.config;
+package com.eirmax.fabric.config;
 
 import com.eirmax.config.FileWriter.AutoTotemFileBuilder;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -7,7 +7,7 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-public class AutoTotemConfigScreen {
+public class AutoTotemConfigScreenFabric {
     public static Screen create(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)

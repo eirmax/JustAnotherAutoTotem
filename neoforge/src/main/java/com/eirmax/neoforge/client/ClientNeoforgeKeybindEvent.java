@@ -1,11 +1,15 @@
 package com.eirmax.neoforge.client;
 
 import com.eirmax.JustAnotherAutoTotem;
+import com.eirmax.neoforge.config.AutoTotemConfigScreenNeoForge;
 import net.minecraft.client.KeyMapping;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.lwjgl.glfw.GLFW;
 
@@ -18,10 +22,17 @@ public class ClientNeoforgeKeybindEvent {
 
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event) {
-        keyMappings.add(Lazy.of(() -> new KeyMapping("key.justanotherautototem.swap", GLFW.GLFW_KEY_R, "category.justanotherautototem")));
+        keyMappings.add(Lazy.of(() -> new KeyMapping("key.justanotherautototem.open_menu", GLFW.GLFW_KEY_B, "category.justanotherautototem")));
 
         for (Lazy<KeyMapping> key : keyMappings) {
             event.register(key.get());
         }
+    }
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        ModLoadingContext.get().registerExtensionPoint(
+                IConfigScreenFactory.class,
+                () -> (mc, screen) -> AutoTotemConfigScreenNeoForge.create(screen)
+        );
     }
 }
