@@ -39,10 +39,7 @@ subprojects {
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.officialMojangMappings()
-        modApi("me.shedaniel.cloth:cloth-config-fabric:${project.clothconfig_version}") {
-            exclude(group: "net.fabricmc.fabric-api")
-        }
-        modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+
     }
 
 
