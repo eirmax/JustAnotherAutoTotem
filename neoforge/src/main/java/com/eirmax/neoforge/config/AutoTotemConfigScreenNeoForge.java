@@ -1,7 +1,6 @@
 package com.eirmax.neoforge.config;
 
 import com.eirmax.config.FileWriter.AutoTotemFileBuilder;
-import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
