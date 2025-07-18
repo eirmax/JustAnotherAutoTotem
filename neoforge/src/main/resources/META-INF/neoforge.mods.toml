@@ -11,7 +11,7 @@ authors = "eirmax"
 description = '''
 Automatically change the pop totem to a new one
 '''
-#logoFile = ""
+logoFile = "assets/justanotherautototem/icon.png"
 
 [[dependencies.justanotherautototem]]
 modId = "neoforge"
@@ -23,7 +23,7 @@ side = "CLIENT"
 [[dependencies.justanotherautototem]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,)"
+versionRange = "[1.21,1.21.1)"
 ordering = "NONE"
 side = "CLIENT"
 
