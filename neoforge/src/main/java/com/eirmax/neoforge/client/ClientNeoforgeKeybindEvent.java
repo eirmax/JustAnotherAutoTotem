@@ -16,7 +16,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.ArrayList;
 import java.util.List;
 
-@EventBusSubscriber(modid = JustAnotherAutoTotem.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JustAnotherAutoTotem.MOD_ID, value = Dist.CLIENT)
 public class ClientNeoforgeKeybindEvent {
     public static final List<Lazy<KeyMapping>> keyMappings = new ArrayList<>();
 
