@@ -30,9 +30,18 @@ public class ClientNeoforgeKeybindEvent {
     }
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        ModLoadingContext.get().registerExtensionPoint(
-                IConfigScreenFactory.class,
-                () -> (mc, screen) -> AutoTotemConfigScreenNeoForge.create(screen)
-        );
+        event.enqueueWork(() -> {
+            ModLoadingContext.get().registerExtensionPoint(
+                    IConfigScreenFactory.class,
+                    () -> (mc, screen) -> {
+                        try {
+                            return AutoTotemConfigScreenNeoForge.create(screen);
+                        } catch (Exception e) {
+                            JustAnotherAutoTotem.LOGGER.info("Failed to create config screen");
+                            return null;
+                        }
+                    }
+            );
+        });
     }
 }
