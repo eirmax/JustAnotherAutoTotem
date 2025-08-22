@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.HashedStack;
 import net.minecraft.network.protocol.game.ServerboundContainerClickPacket;
 import net.minecraft.network.protocol.game.ServerboundPlayerActionPacket;
 import net.minecraft.network.protocol.game.ServerboundSetCarriedItemPacket;
@@ -26,7 +25,7 @@ public class TotemHelper {
     public static void updateTotemState(Player player) {
         if (player == null) return;
         Inventory inv = player.getInventory();
-        TotemInMainhand = !inv.getItem(inv.getSelectedSlot()).isEmpty() && inv.getItem(inv.getSelectedSlot()).getItem() == Items.TOTEM_OF_UNDYING;
+        TotemInMainhand = !inv.getItem(inv.selected).isEmpty() && inv.getItem(inv.selected).getItem() == Items.TOTEM_OF_UNDYING;
         TotemInOffhand = !inv.getItem(45).isEmpty() && inv.getItem(45).getItem() == Items.TOTEM_OF_UNDYING;
     }
 
@@ -74,7 +73,7 @@ public class TotemHelper {
         if (networkHandler == null) return;
 
         ItemStack offhandStack = inv.getItem(45);
-        ItemStack mainHandStack = inv.getItem(inv.getSelectedSlot());
+        ItemStack mainHandStack = inv.getItem(inv.selected);
 
         boolean offhandNeedsTotem = offhandStack.isEmpty() || offhandStack.getItem() != Items.TOTEM_OF_UNDYING;
 
@@ -82,7 +81,7 @@ public class TotemHelper {
             if (!offhandNeedsTotem) return;
 
             if (slot < 9) {
-                int previousSlot = inv.getSelectedSlot();
+                int previousSlot = inv.selected;
                 networkHandler.send(new ServerboundSetCarriedItemPacket(slot));
                 networkHandler.send(new ServerboundPlayerActionPacket(
                         ServerboundPlayerActionPacket.Action.SWAP_ITEM_WITH_OFFHAND,
@@ -91,23 +90,24 @@ public class TotemHelper {
                 ));
                 networkHandler.send(new ServerboundSetCarriedItemPacket(previousSlot));
             } else {
+                ItemStack slotStack = inv.getItem(slot);
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) slot,
-                        (byte) 0,
+                        slot,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        slotStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) 45,
-                        (byte) 0,
+                        45,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        offhandStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
             }
         } else if (TotemInMainhand && !offhandNeedsTotem) {
@@ -115,30 +115,31 @@ public class TotemHelper {
             if (slot < 9) {
                 networkHandler.send(new ServerboundSetCarriedItemPacket(slot));
             } else {
+                ItemStack slotStack = inv.getItem(slot);
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) slot,
-                        (byte) 0,
+                        slot,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        slotStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) inv.getSelectedSlot(),
-                        (byte) 0,
+                        inv.selected,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        mainHandStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
             }
         } else {
             if (!offhandNeedsTotem) return;
 
             if (slot < 9) {
-                int previousSlot = inv.getSelectedSlot();
+                int previousSlot = inv.selected;
                 networkHandler.send(new ServerboundSetCarriedItemPacket(slot));
                 networkHandler.send(new ServerboundPlayerActionPacket(
                         ServerboundPlayerActionPacket.Action.SWAP_ITEM_WITH_OFFHAND,
@@ -147,23 +148,24 @@ public class TotemHelper {
                 ));
                 networkHandler.send(new ServerboundSetCarriedItemPacket(previousSlot));
             } else {
+                ItemStack slotStack = inv.getItem(slot);
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) slot,
-                        (byte) 0,
+                        slot,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        slotStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
                 networkHandler.send(new ServerboundContainerClickPacket(
                         screenHandler.containerId,
                         screenHandler.getStateId(),
-                        (short) 45,
-                        (byte) 0,
+                        45,
+                        0,
                         ClickType.PICKUP,
-                        new Int2ObjectOpenHashMap<>(),
-                        HashedStack.EMPTY
+                        offhandStack.copy(),
+                        new Int2ObjectOpenHashMap<>()
                 ));
             }
         }
