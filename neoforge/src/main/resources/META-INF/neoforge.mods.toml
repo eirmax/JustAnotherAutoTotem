@@ -30,7 +30,7 @@ side = "CLIENT"
 [[dependencies.justanotherautototem]]
 modId = "cloth_config"
 type = "required"
-versionRange = "[16.0,)"
+versionRange = "[17.0,)"
 ordering = "NONE"
 side = "CLIENT"
 
