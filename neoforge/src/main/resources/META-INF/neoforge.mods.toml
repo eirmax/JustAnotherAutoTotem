@@ -27,5 +27,13 @@ versionRange = "[1.21,1.21.1)"
 ordering = "NONE"
 side = "CLIENT"
 
+[[dependencies.justanotherautototem]]
+modId = "cloth_config"
+type = "required"
+versionRange = "[19.0,)"
+ordering = "NONE"
+side = "CLIENT"
+
+
 [[mixins]]
 config = "justanotherautototem.mixins.json"
